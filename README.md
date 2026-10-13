@@ -70,9 +70,24 @@ Running the script produces:
 - `artifacts/sparklens/report.md`: Markdown report detailing execution findings.
 - `artifacts/sparklens/report.html`: Interactive HTML report with execution statistics and recommendations.
 
+### Interactive Dashboard Analysis
+
+You can also run SparkLens interactively within the Streamlit dashboard:
+
+```bash
+streamlit run app.py
+```
+
+Then switch to the **⚡ SparkLens Analysis** page from the sidebar to:
+- Generate the Spark physical execution plan.
+- Run deterministic and AI-powered performance analysis.
+- Inspect the live execution DAG and structured findings.
+- Download reports (`.md`, `.html`) and plan text files directly.
+
 ### Running Tests
 
 ```bash
 pytest tests/
 ```
+
 

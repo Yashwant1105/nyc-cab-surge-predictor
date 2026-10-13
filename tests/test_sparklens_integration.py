@@ -51,3 +51,11 @@ def test_analyze_plan_deterministic(tmp_path):
     assert Path(result["report_html"]).exists()
     assert Path(result["dag_png"]).exists()
 
+
+def test_sparklens_page_import():
+    import importlib
+    mod = importlib.import_module("pages.1_⚡_SparkLens_Analysis")
+    assert mod.SPARKLENS_AVAILABLE is True
+    assert mod.DEFAULT_PLAN_PATH is not None
+
+

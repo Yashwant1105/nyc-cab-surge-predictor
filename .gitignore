@@ -11,3 +11,4 @@ __pycache__/
 artifacts/
 *.plan.txt
 *.spark-plan.txt
+.env
