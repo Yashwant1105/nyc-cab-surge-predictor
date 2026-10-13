@@ -1,93 +1,93 @@
-# NYC Cab Surge Predictor
+# 🚖 NYC Cab Surge Price Predictor
 
-A real-time taxi demand and surge prediction application for New York City built with Streamlit and PySpark.
-
----
-
-## Features
-
-- **Surge Probability Estimation**: Predicts surge levels using trained ML models (Logistic Regression, Decision Tree, Random Forest).
-- **Interactive Predictor UI**: Real-time sliders and toggles for pickup hour, trip demand, rain, events, weekend, and peak hours.
-- **SparkLens Integration**: Generates and analyzes Apache Spark physical execution plans for the training and feature engineering pipeline.
+A machine learning dashboard that predicts surge pricing probability for NYC yellow cabs in real time — built with PySpark on Databricks and served via a Streamlit web app.
 
 ---
 
-## Setup & Installation
+## 🖥️ Dashboard Preview
 
-### Core Dashboard Dependencies
+> Dark glassmorphism UI with live gauge, feature explainability, what-if analysis and model comparison.
+
+---
+
+## 🧠 How It Works
+
+Input conditions like pickup hour, trip count, weather, and events are passed through trained ML models. The app returns a surge probability score (0–100%) along with a risk level and feature-level explainability.
+
+---
+
+## ⚙️ Tech Stack
+
+| Layer | Tools |
+|---|---|
+| Data Processing | Apache Spark, PySpark |
+| Model Training | Databricks Community Edition |
+| ML Models | Logistic Regression, Decision Tree, Random Forest |
+| Frontend | Streamlit, Plotly |
+| Dataset | NYC Yellow Taxi 2025 |
+
+---
+
+## 🤖 Models
+
+| Model | Accuracy | F1 Score |
+|---|---|---|
+| Logistic Regression | 96.90% | 0.909 |
+| Decision Tree | 100% | 1.000 |
+| Random Forest | 100% | 1.000 |
+
+---
+
+## 📊 Features
+
+- **Live Surge Gauge** — probability meter with LOW / MEDIUM / HIGH risk levels
+- **Feature Contribution** — bar chart showing how each input shifts the prediction
+- **What-If Analysis** — simulate changes to trip count, rain, events in real time
+- **Model Comparison** — compare all three models side by side on the same inputs
+- **NYC Demand Map** — simulated heatmap of pickup demand across the city
+
+---
+
+## 🚀 Run Locally
 
 ```bash
+# Clone the repo
+git clone https://github.com/Yashwant1105/nyc-cab-surge-predictor.git
+cd nyc-cab-surge-predictor
+
+# Create and activate virtual environment
 python -m venv venv
-venv\Scripts\activate   # Windows (or source venv/bin/activate on macOS/Linux)
+venv\Scripts\activate      # Windows
+# source venv/bin/activate  # Mac/Linux
+
+# Install dependencies
 pip install -r requirements.txt
-```
 
-### Running the Dashboard
-
-```bash
+# Run the app
 streamlit run app.py
 ```
 
 ---
 
-## SparkLens Analysis
+## 📁 Project Structure
 
-SparkLens provides deterministic and AI-assisted analysis of the PySpark physical execution plan behind NYC Cab Surge Predictor's feature engineering pipeline.
-
-### Installation
-
-Install the optional SparkLens dependencies:
-
-```bash
-pip install -r requirements-sparklens.txt
+```
+nyc-cab-surge-predictor/
+├── app.py                      # Streamlit dashboard
+├── cab_surge_pred_final.ipynb  # PySpark model training (Databricks)
+├── requirements.txt
+├── .gitignore
+└── README.md
 ```
 
-### Plan Generation & Analysis
+---
 
-Run the end-to-end analysis CLI command:
+## 📓 Notebook
 
-```bash
-python scripts/analyze_cab_surge.py
-```
+`cab_surge_pred_final.ipynb` contains the full ML pipeline run on Databricks Community Edition:
+- Data cleaning & feature engineering
+- StandardScaler preprocessing
+- Training Logistic Regression, Decision Tree, Random Forest
+- Model evaluation (accuracy, F1, confusion matrix)
 
-Optional CLI flags:
-
-- `--plan-output PATH`: Path to write the formatted Spark execution plan (default: `artifacts/cab_surge_plan.txt`).
-- `--report-output PATH`: Output directory for generated reports and DAG visualization (default: `artifacts/sparklens`).
-- `--ai`: Enable AI-assisted explanations using Google Gemini (requires `GEMINI_API_KEY`).
-
-Example with AI analysis:
-
-```bash
-python scripts/analyze_cab_surge.py --ai
-```
-
-### Output Artifacts
-
-Running the script produces:
-- `artifacts/cab_surge_plan.txt`: The captured Spark physical execution plan.
-- `artifacts/sparklens/dag.png`: Visual directed acyclic graph of the Spark operators.
-- `artifacts/sparklens/report.md`: Markdown report detailing execution findings.
-- `artifacts/sparklens/report.html`: Interactive HTML report with execution statistics and recommendations.
-
-### Interactive Dashboard Analysis
-
-You can also run SparkLens interactively within the Streamlit dashboard:
-
-```bash
-streamlit run app.py
-```
-
-Then switch to the **⚡ SparkLens Analysis** page from the sidebar to:
-- Generate the Spark physical execution plan.
-- Run deterministic and AI-powered performance analysis.
-- Inspect the live execution DAG and structured findings.
-- Download reports (`.md`, `.html`) and plan text files directly.
-
-### Running Tests
-
-```bash
-pytest tests/
-```
-
-
+---
