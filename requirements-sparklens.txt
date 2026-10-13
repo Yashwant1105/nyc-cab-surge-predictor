@@ -1,0 +1,4 @@
+# Optional dependencies for SparkLens integration and PySpark plan generation
+pyspark>=3.5.0
+sparklens
+

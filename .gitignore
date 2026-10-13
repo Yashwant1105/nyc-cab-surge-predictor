@@ -1,6 +1,13 @@
 venv/
+.venv/
+.venv-sparklens/
 *.csv
+!data/fixtures/*.csv
 __pycache__/
 *.pyc
 *.pyd
 .DS_Store
+.pytest_cache/
+artifacts/
+*.plan.txt
+*.spark-plan.txt
